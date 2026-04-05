@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy Policy – Tech Nest</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #080c14;
+    --surface: #0e1420;
+    --surface2: #141c2e;
+    --border: rgba(99,179,237,0.12);
+    --accent: #3b9eff;
+    --accent2: #00e5c3;
+    --text: #e8edf5;
+    --muted: #7a8ba8;
+    --glow: rgba(59,158,255,0.15);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,158,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,158,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Glow top-left */
+  .glow-orb {
+    position: fixed;
+    top: -150px; left: -150px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,229,195,0.07) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-wrap { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── HEADER ── */
+  header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 40px 0 48px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 52px;
+    animation: fadeDown 0.6s ease both;
+  }
+  .logo-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 0 24px rgba(59,158,255,0.35);
+    flex-shrink: 0;
+  }
+  .logo-text span:first-child {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 20px; letter-spacing: -0.3px;
+  }
+  .logo-text span:last-child {
+    display: block;
+    font-size: 12px; color: var(--accent2);
+    font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(0,229,195,0.08);
+    border: 1px solid rgba(0,229,195,0.22);
+    border-radius: 20px; padding: 4px 14px;
+    font-size: 12px; font-weight: 500; color: var(--accent2);
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(32px, 6vw, 50px);
+    line-height: 1.08; letter-spacing: -1.5px; margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--accent2); }
+  .hero-meta {
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    font-size: 13px; color: var(--muted);
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* ── NOTICE BANNER ── */
+  .notice {
+    background: rgba(0,229,195,0.06);
+    border: 1px solid rgba(0,229,195,0.2);
+    border-left: 3px solid var(--accent2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: var(--muted);
+    margin-bottom: 44px;
+    animation: fadeUp 0.5s 0.15s ease both;
+  }
+  .notice strong { color: var(--accent2); }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 36px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+    animation: fadeUp 0.5s ease both;
+  }
+  .section:hover { border-color: rgba(59,158,255,0.22); }
+  .section:nth-child(1) { animation-delay: 0.1s; }
+  .section:nth-child(2) { animation-delay: 0.15s; }
+  .section:nth-child(3) { animation-delay: 0.2s; }
+  .section:nth-child(4) { animation-delay: 0.25s; }
+  .section:nth-child(5) { animation-delay: 0.3s; }
+  .section:nth-child(6) { animation-delay: 0.35s; }
+  .section:nth-child(7) { animation-delay: 0.4s; }
+
+  .section-head {
+    display: flex; align-items: center; gap: 14px;
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+  }
+  .section-num {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 13px; color: #fff;
+    flex-shrink: 0;
+  }
+  .section-head h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-head h2 .icon { font-size: 18px; }
+
+  .section-body { padding: 22px 24px; }
+  .section-body p { font-size: 14.5px; color: var(--muted); margin-bottom: 12px; line-height: 1.72; }
+  .section-body p:last-child { margin-bottom: 0; }
+  .section-body p strong { color: var(--text); font-weight: 500; }
+
+  .item-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  .item-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: var(--muted); line-height: 1.6;
+  }
+  .item-list li::before {
+    content: '›';
+    color: var(--accent2);
+    font-size: 16px; font-weight: 700;
+    flex-shrink: 0; margin-top: -1px;
+  }
+  .item-list li strong { color: var(--text); font-weight: 500; }
+
+  /* ── CONTACT CARD ── */
+  .contact-card {
+    background: linear-gradient(135deg, rgba(59,158,255,0.08), rgba(0,229,195,0.05));
+    border: 1px solid rgba(59,158,255,0.22);
+    border-radius: 16px; padding: 28px 24px;
+    display: flex; gap: 20px; align-items: flex-start;
+    margin-top: 12px;
+    animation: fadeUp 0.5s 0.45s ease both;
+  }
+  .contact-card .c-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+  .contact-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 16px; margin-bottom: 6px;
+  }
+  .contact-card p { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
+  .email-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 14px;
+    text-decoration: none; padding: 9px 18px;
+    border-radius: 8px;
+    transition: opacity 0.2s, transform 0.2s;
+    box-shadow: 0 4px 16px rgba(59,158,255,0.25);
+  }
+  .email-link:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 56px; padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center; font-size: 12px; color: var(--muted);
+    animation: fadeUp 0.5s 0.5s ease both;
+  }
+  footer span { color: var(--accent); }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    .contact-card { flex-direction: column; gap: 12px; }
+    .hero-meta { gap: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="glow-orb"></div>
+<div class="page-wrap">
+
+  <header>
+    <div class="logo-icon">🛒</div>
+    <div class="logo-text">
+      <span>Tech Nest</span>
+      <span>Privacy Policy</span>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-tag">🔒 Privacy & Policy</div>
+    <h1>Your privacy<br/><span>matters to us.</span></h1>
+    <div class="hero-meta">
+      <span>📅 Effective: January 1, 2025</span>
+      <span>🔄 Last updated: January 1, 2025</span>
+    </div>
+  </div>
+
+  <div class="notice">
+    <strong>Please read this policy carefully.</strong> By using the Tech Nest app, you agree to the collection and use of your information as described in this Privacy Policy.
+  </div>
+
+  <div class="sections-list">
+
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">01</div>
+        <h2><span class="icon">📋</span> Information We Collect</h2>
+      </div>
+      <div class="section-body">
+        <p>When you use Tech Nest, we may collect the following types of information:</p>
+        <ul class="item-list">
+          <li><strong>Account Information:</strong> Name, email address, phone number, and password when you register.</li>
+          <li><strong>Order Information:</strong> Shipping address, billing details, and purchase history.</li>
+          <li><strong>Device Information:</strong> Device type, operating system, and app version for technical support.</li>
+          <li><strong>Usage Data:</strong> Pages visited, products viewed, and search queries within the app.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">02</div>
+        <h2><span class="icon">⚙️</span> How We Use Your Information</h2>
+      </div>
+      <div class="section-body">
+        <p>We use the information we collect to:</p>
+        <ul class="item-list">
+          <li>Process and fulfill your orders and send order confirmations.</li>
+          <li>Provide customer support and respond to your inquiries.</li>
+          <li>Improve and personalize your app experience.</li>
+          <li>Send important notifications about your account or orders.</li>
+          <li>Detect and prevent fraud or unauthorized activity.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">03</div>
+        <h2><span class="icon">🔐</span> Data Security</h2>
+      </div>
+      <div class="section-body">
+        <p>We take your data security seriously. All data transmitted between your device and our servers is <strong>fully encrypted</strong> using industry-standard SSL/TLS protocols.</p>
+        <p>We never store your full payment card details on our servers. Payment processing is handled by trusted, certified payment providers.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">04</div>
+        <h2><span class="icon">🤝</span> Sharing Your Information</h2>
+      </div>
+      <div class="section-body">
+        <p>We do <strong>not sell, rent, or trade</strong> your personal information to third parties. We may share your data only in these limited cases:</p>
+        <ul class="item-list">
+          <li><strong>Delivery Partners:</strong> Shipping address shared with couriers to fulfill your orders.</li>
+          <li><strong>Legal Compliance:</strong> If required by law or a valid court order.</li>
+          <li><strong>Service Providers:</strong> Trusted vendors who assist in operating our platform, bound by confidentiality agreements.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">05</div>
+        <h2><span class="icon">👤</span> Your Rights</h2>
+      </div>
+      <div class="section-body">
+        <p>You have full control over your personal data. You have the right to:</p>
+        <ul class="item-list">
+          <li>Access and review the personal data we hold about you.</li>
+          <li>Request correction of inaccurate or incomplete information.</li>
+          <li>Request deletion of your account and associated data.</li>
+          <li>Opt out of non-essential communications at any time.</li>
+        </ul>
+        <p style="margin-top:14px;">To exercise any of these rights, contact us at <strong>technest1485@gmail.com</strong>.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">06</div>
+        <h2><span class="icon">🍪</span> Cookies & Tracking</h2>
+      </div>
+      <div class="section-body">
+        <p>Our app may use local storage and session data to remember your preferences and keep you logged in. We do <strong>not use third-party advertising trackers</strong> or sell behavioral data to advertisers.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">07</div>
+        <h2><span class="icon">🔄</span> Changes to This Policy</h2>
+      </div>
+      <div class="section-body">
+        <p>We may update this Privacy Policy from time to time. When we do, we will notify you through the app and update the "Last updated" date at the top of this page. Continued use of the app after any changes constitutes your acceptance of the updated policy.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="contact-card">
+    <div class="c-icon">📬</div>
+    <div>
+      <h3>Privacy Questions?</h3>
+      <p>If you have any questions or concerns about this Privacy Policy, we're here to help.</p>
+      <a class="email-link" href="mailto:technest1485@gmail.com">✉️ technest1485@gmail.com</a>
+    </div>
+  </div>
+
+  <footer>© 2025 <span>Tech Nest</span>. All rights reserved.</footer>
+
+</div>
+</body>
+</html>

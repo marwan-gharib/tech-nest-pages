@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Terms & Conditions – Tech Nest</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #080c14;
+    --surface: #0e1420;
+    --surface2: #141c2e;
+    --border: rgba(99,179,237,0.12);
+    --accent: #3b9eff;
+    --accent2: #00e5c3;
+    --warn: #f0a500;
+    --text: #e8edf5;
+    --muted: #7a8ba8;
+    --glow: rgba(59,158,255,0.15);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(59,158,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,158,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+  }
+
+  .glow-orb {
+    position: fixed;
+    bottom: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(240,165,0,0.05) 0%, transparent 65%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .page-wrap { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── HEADER ── */
+  header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 40px 0 48px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 52px;
+    animation: fadeDown 0.6s ease both;
+  }
+  .logo-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 0 24px rgba(59,158,255,0.35);
+    flex-shrink: 0;
+  }
+  .logo-text span:first-child {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 20px; letter-spacing: -0.3px;
+  }
+  .logo-text span:last-child {
+    display: block;
+    font-size: 12px; color: var(--warn);
+    font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(240,165,0,0.08);
+    border: 1px solid rgba(240,165,0,0.22);
+    border-radius: 20px; padding: 4px 14px;
+    font-size: 12px; font-weight: 500; color: var(--warn);
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(30px, 6vw, 48px);
+    line-height: 1.08; letter-spacing: -1.5px; margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-meta {
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    font-size: 13px; color: var(--muted);
+  }
+
+  /* ── NOTICE ── */
+  .notice {
+    background: rgba(240,165,0,0.05);
+    border: 1px solid rgba(240,165,0,0.2);
+    border-left: 3px solid var(--warn);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13.5px; color: var(--muted);
+    margin-bottom: 44px;
+    animation: fadeUp 0.5s 0.15s ease both;
+  }
+  .notice strong { color: var(--warn); }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    animation: fadeUp 0.5s ease both;
+  }
+  .section:hover { border-color: rgba(59,158,255,0.22); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+  .section:nth-child(1) { animation-delay: 0.1s; }
+  .section:nth-child(2) { animation-delay: 0.14s; }
+  .section:nth-child(3) { animation-delay: 0.18s; }
+  .section:nth-child(4) { animation-delay: 0.22s; }
+  .section:nth-child(5) { animation-delay: 0.26s; }
+  .section:nth-child(6) { animation-delay: 0.30s; }
+  .section:nth-child(7) { animation-delay: 0.34s; }
+  .section:nth-child(8) { animation-delay: 0.38s; }
+
+  .section-head {
+    display: flex; align-items: center; gap: 14px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .section-head:hover { background: rgba(20,28,46,0.9); }
+
+  .section-num {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, #2a6fc7, #1aa898);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 13px; color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-head-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    flex: 1; gap: 12px;
+  }
+  .section-head h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 15.5px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-head h2 .icon { font-size: 17px; }
+  .toggle-arrow {
+    font-size: 11px; color: var(--muted);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .section.open .toggle-arrow { transform: rotate(180deg); color: var(--accent); }
+
+  .section-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .section.open .section-body { max-height: 600px; }
+
+  .section-body-inner { padding: 22px 24px; }
+  .section-body-inner p { font-size: 14px; color: var(--muted); margin-bottom: 12px; line-height: 1.72; }
+  .section-body-inner p:last-child { margin-bottom: 0; }
+  .section-body-inner p strong { color: var(--text); font-weight: 500; }
+
+  .item-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 9px; margin-top: 4px; }
+  .item-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: var(--muted); line-height: 1.6;
+  }
+  .item-list li::before {
+    content: '›';
+    color: var(--accent); font-size: 16px; font-weight: 700;
+    flex-shrink: 0; margin-top: -1px;
+  }
+  .item-list li strong { color: var(--text); font-weight: 500; }
+
+  /* Warn list */
+  .warn-list li::before { color: var(--warn); }
+
+  /* ── AGREEMENT BANNER ── */
+  .agreement {
+    background: linear-gradient(135deg, rgba(59,158,255,0.08), rgba(0,229,195,0.05));
+    border: 1px solid rgba(59,158,255,0.22);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    margin-top: 24px;
+    animation: fadeUp 0.5s 0.42s ease both;
+  }
+  .agreement .ag-icon { font-size: 36px; margin-bottom: 14px; }
+  .agreement h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 18px; margin-bottom: 10px;
+  }
+  .agreement p { font-size: 14px; color: var(--muted); max-width: 440px; margin: 0 auto 18px; }
+  .email-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 14px;
+    text-decoration: none; padding: 10px 22px;
+    border-radius: 8px;
+    transition: opacity 0.2s, transform 0.2s;
+    box-shadow: 0 4px 16px rgba(59,158,255,0.25);
+  }
+  .email-link:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 52px; padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center; font-size: 12px; color: var(--muted);
+    animation: fadeUp 0.5s 0.5s ease both;
+  }
+  footer span { color: var(--accent); }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    .agreement { padding: 22px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="glow-orb"></div>
+<div class="page-wrap">
+
+  <header>
+    <div class="logo-icon">🛒</div>
+    <div class="logo-text">
+      <span>Tech Nest</span>
+      <span>Terms & Conditions</span>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-tag">📜 Terms of Use</div>
+    <h1>Terms &<br/><span>Conditions</span> of Use</h1>
+    <div class="hero-meta">
+      <span>📅 Effective: January 1, 2025</span>
+      <span>🔄 Last updated: January 1, 2025</span>
+    </div>
+  </div>
+
+  <div class="notice">
+    <strong>Important:</strong> By downloading or using the Tech Nest app, you agree to be bound by these Terms and Conditions. Please read them carefully before using our services.
+  </div>
+
+  <div class="sections-list">
+
+    <div class="section open">
+      <div class="section-head" onclick="toggle(this)">
+        <div class="section-num">01</div>
+        <div class="section-head-inner">
+          <h2><span class="icon">📱</span> Acceptance of Terms</h2>
+          <span class="toggle-arrow">▼</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="section-body-inner">
+          <p>By accessing or using the Tech Nest mobile application, you confirm that you are at least <strong>18 years of age</strong>, have read and understood these Terms, and agree to be bound by them.</p>
+          <p>If you do not agree to these Terms, please do not use our app or services.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head" onclick="toggle(this)">
+        <div class="section-num">02</div>
+        <div class="section-head-inner">
+          <h2><span class="icon">👤</span> User Accounts</h2>
+          <span class="toggle-arrow">▼</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="section-body-inner">
+          <p>To access certain features of the app, you must create an account. You agree to:</p>
+          <ul class="item-list">
+            <li>Provide <strong>accurate and complete information</strong> when registering.</li>
+            <li>Keep your password <strong>confidential</strong> and not share it with others.</li>
+            <li>Be responsible for all activity that occurs under your account.</li>
+            <li>Notify us immediately of any <strong>unauthorized use</strong> of your account.</li>
+          </ul>
+          <p style="margin-top:14px;">Tech Nest reserves the right to suspend or terminate accounts that violate these Terms.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head" onclick="toggle(this)">
+        <div class="section-num">03</div>
+        <div class="section-head-inner">
+          <h2><span class="icon">🛍️</span> Orders & Purchases</h2>
+          <span class="toggle-arrow">▼</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="section-body-inner">
+          <p>When you place an order through Tech Nest, you are making an offer to purchase a product. We reserve the right to accept or decline any order.</p>
+          <ul class="item-list">
+            <li>All prices are displayed in the local currency and are <strong>inclusive of applicable taxes</strong>.</li>
+            <li>Product availability is not guaranteed until your order is confirmed.</li>
+            <li>Orders may be cancelled within <strong>24 hours</strong> of placement.</li>
+            <li>We are not responsible for delays caused by third-party delivery partners.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head" onclick="toggle(this)">
+        <div class="section-num">04</div>
+        <div class="section-head-inner">
+          <h2><span class="icon">💳</span> Payments & Billing</h2>
+          <span class="toggle-arrow">▼</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="section-body-inner">
+          <p>All payments made through the app are processed securely. By providing payment details, you confirm that you are authorized to use that payment method.</p>
+          <ul class="item-list">
+            <li>Accepted methods: <strong>credit/debit cards</strong> and <strong>cash on delivery</strong>.</li>
+            <li>All transactions are encrypted and processed through certified payment gateways.</li>
+            <li>Tech Nest does not store full card details on its servers.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head" onclick="toggle(this)">
+        <div class="section-num">05</div>
+        <div class="section-head-inner">
+          <h2><span class="icon">🔄</span> Returns & Refunds</h2>
+          <span class="toggle-arrow">▼</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="section-body-inner">
+          <p>We want you to be satisfied with every purchase. Our return policy is as follows:</p>
+          <ul class="item-list">
+            <li>Items may be returned within <strong>14 days of delivery</strong> if unused and in original packaging.</li>
+            <li>Refunds are processed within <strong>5–7 business days</strong> after the return is received.</li>
+            <li>Damaged or defective items must be reported within <strong>48 hours</strong> of delivery.</li>
+            <li>Items marked as <strong>non-returnable</strong> at time of purchase are not eligible.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head" onclick="toggle(this)">
+        <div class="section-num">06</div>
+        <div class="section-head-inner">
+          <h2><span class="icon">🚫</span> Prohibited Activities</h2>
+          <span class="toggle-arrow">▼</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="section-body-inner">
+          <p>You agree not to engage in any of the following while using the Tech Nest app:</p>
+          <ul class="item-list warn-list">
+            <li>Using the app for any <strong>fraudulent or illegal purpose</strong>.</li>
+            <li>Attempting to gain <strong>unauthorized access</strong> to our systems or data.</li>
+            <li>Submitting <strong>false reviews</strong> or misleading product ratings.</li>
+            <li>Reselling products purchased through the app without authorization.</li>
+            <li>Interfering with the app's normal operation or other users' experience.</li>
+          </ul>
+          <p style="margin-top:14px;">Violations may result in immediate account termination and legal action.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head" onclick="toggle(this)">
+        <div class="section-num">07</div>
+        <div class="section-head-inner">
+          <h2><span class="icon">⚖️</span> Limitation of Liability</h2>
+          <span class="toggle-arrow">▼</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="section-body-inner">
+          <p>Tech Nest provides its services "as is" without warranties of any kind. To the maximum extent permitted by law, we are not liable for:</p>
+          <ul class="item-list">
+            <li>Indirect, incidental, or consequential damages arising from use of the app.</li>
+            <li>Loss of data or interruption of service.</li>
+            <li>Actions or omissions of <strong>third-party delivery partners</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head" onclick="toggle(this)">
+        <div class="section-num">08</div>
+        <div class="section-head-inner">
+          <h2><span class="icon">🔄</span> Changes to Terms</h2>
+          <span class="toggle-arrow">▼</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="section-body-inner">
+          <p>We reserve the right to update or modify these Terms at any time. We will notify users of significant changes through the app. Continued use of the app after such changes constitutes your acceptance of the new Terms.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="agreement">
+    <div class="ag-icon">🤝</div>
+    <h3>Questions about our Terms?</h3>
+    <p>If you have any questions or concerns about these Terms and Conditions, our team is happy to help.</p>
+    <a class="email-link" href="mailto:technest1485@gmail.com">✉️ technest1485@gmail.com</a>
+  </div>
+
+  <footer>© 2025 <span>Tech Nest</span>. All rights reserved.</footer>
+
+</div>
+
+<script>
+  function toggle(head) {
+    const section = head.closest('.section');
+    section.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
