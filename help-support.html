@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Help & Support – Tech Nest</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #080c14;
+    --surface: #0e1420;
+    --surface2: #141c2e;
+    --border: rgba(99,179,237,0.12);
+    --accent: #3b9eff;
+    --accent2: #00e5c3;
+    --text: #e8edf5;
+    --muted: #7a8ba8;
+    --glow: rgba(59,158,255,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,158,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,158,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Glow orbs */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59,158,255,0.08) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-wrap { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── HEADER ── */
+  header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 40px 0 48px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 52px;
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .logo-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 0 24px rgba(59,158,255,0.35);
+    flex-shrink: 0;
+  }
+
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-text span:first-child {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.3px;
+    color: var(--text);
+  }
+  .logo-text span:last-child {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(32px, 6vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p { color: var(--muted); font-size: 16px; max-width: 480px; }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 44px;
+    animation: fadeUp 0.5s ease both;
+  }
+  .section:nth-child(1) { animation-delay: 0.15s; }
+  .section:nth-child(2) { animation-delay: 0.2s; }
+  .section:nth-child(3) { animation-delay: 0.25s; }
+  .section:nth-child(4) { animation-delay: 0.3s; }
+  .section:nth-child(5) { animation-delay: 0.35s; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-icon {
+    width: 38px; height: 38px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .section-header h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.2px;
+    color: var(--text);
+  }
+
+  /* ── ACCORDION ── */
+  .accordion { display: flex; flex-direction: column; gap: 8px; }
+
+  .acc-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .acc-item:hover { border-color: rgba(59,158,255,0.3); box-shadow: 0 0 18px var(--glow); }
+
+  .acc-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 500;
+    padding: 16px 18px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    transition: color 0.2s;
+  }
+  .acc-trigger:hover { color: var(--accent); }
+
+  .acc-arrow {
+    font-size: 12px;
+    color: var(--muted);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .acc-item.open .acc-arrow { transform: rotate(180deg); color: var(--accent); }
+
+  .acc-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .acc-item.open .acc-body { max-height: 300px; }
+
+  .acc-body p {
+    padding: 0 18px 16px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+
+  /* ── CONTACT CARD ── */
+  .contact-card {
+    background: linear-gradient(135deg, rgba(59,158,255,0.08), rgba(0,229,195,0.06));
+    border: 1px solid rgba(59,158,255,0.22);
+    border-radius: 16px;
+    padding: 28px 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    animation: fadeUp 0.5s 0.4s ease both;
+  }
+
+  .contact-card .contact-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .contact-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .contact-card p { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+
+  .email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 9px 18px;
+    border-radius: 8px;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .email-link:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .hours {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--accent2);
+    margin-top: 10px;
+    font-weight: 500;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 64px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    animation: fadeUp 0.5s 0.5s ease both;
+  }
+  footer span { color: var(--accent); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .contact-card { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- Header -->
+  <header>
+    <div class="logo-icon">🛒</div>
+    <div class="logo-text">
+      <span>Tech Nest</span>
+      <span>Help & Support</span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>How can we <span>help you?</span></h1>
+    <p>Find answers to the most common questions below, or reach out to our support team directly.</p>
+  </div>
+
+  <!-- Section: Orders -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">📦</div>
+      <h2>Orders & Shipping</h2>
+    </div>
+    <div class="accordion">
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggle(this)">
+          How do I track my order?
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body"><p>After placing an order, go to the <strong>Orders</strong> section in the app to see real-time status updates and estimated delivery time.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggle(this)">
+          How long does delivery take?
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body"><p>Standard delivery takes <strong>3–7 business days</strong> depending on your location. Express delivery may be available at checkout.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggle(this)">
+          Can I cancel my order?
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body"><p>Yes! You can cancel your order within <strong>24 hours</strong> of placing it from the Orders section. After that, contact our support team for assistance.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section: Returns -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🔄</div>
+      <h2>Returns & Refunds</h2>
+    </div>
+    <div class="accordion">
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggle(this)">
+          What is the return policy?
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body"><p>Products can be returned within <strong>14 days</strong> of delivery if they are unused and in original packaging.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggle(this)">
+          How do I request a refund?
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body"><p>Contact us via email at <strong>technest1485@gmail.com</strong> with your order number and reason for return. We'll process your refund within 5–7 business days.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section: Payments -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">💳</div>
+      <h2>Payments</h2>
+    </div>
+    <div class="accordion">
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggle(this)">
+          What payment methods are accepted?
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body"><p>We accept <strong>credit/debit cards</strong> and <strong>cash on delivery</strong>. More payment options are coming soon.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggle(this)">
+          Is my payment information secure?
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body"><p>Absolutely. All transactions are fully <strong>encrypted and secure</strong>. We never store your card details on our servers.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section: App Issues -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">📱</div>
+      <h2>App Issues</h2>
+    </div>
+    <div class="accordion">
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggle(this)">
+          The app is not working properly.
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body"><p>Try closing and reopening the app. If the issue persists, check for the latest app update in the store or try restarting your device.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" onclick="toggle(this)">
+          I forgot my password.
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body"><p>Use the <strong>"Forgot Password"</strong> option on the login screen. A reset link will be sent to your registered email address.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Card -->
+  <div class="contact-card">
+    <div class="contact-icon">📬</div>
+    <div>
+      <h3>Still need help?</h3>
+      <p>Our support team is happy to assist you with anything not covered above.</p>
+      <a class="email-link" href="mailto:technest1485@gmail.com">✉️ technest1485@gmail.com</a>
+      <br/>
+      <span class="hours">🕐 Sun – Thu &nbsp;·&nbsp; 9:00 AM – 6:00 PM &nbsp;·&nbsp; Reply within 24h</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 <span>Tech Nest</span>. All rights reserved.
+  </footer>
+
+</div>
+
+<script>
+  function toggle(btn) {
+    const item = btn.closest('.acc-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.acc-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
